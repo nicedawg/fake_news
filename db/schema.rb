@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_143601) do
+ActiveRecord::Schema.define(version: 2018_07_28_232919) do
 
-  create_table "fake_news_sources", force: :cascade do |t|
-    t.string "twitter_handle"
-    t.string "filepath"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fake_tweets", force: :cascade do |t|
+  create_table "fake_articles", force: :cascade do |t|
     t.integer "fake_news_source_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["fake_news_source_id"], name: "index_fake_tweets_on_fake_news_source_id"
+    t.index ["fake_news_source_id"], name: "index_fake_articles_on_fake_news_source_id"
+  end
+
+  create_table "fake_news_sources", force: :cascade do |t|
+    t.string "query"
+    t.string "filepath"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

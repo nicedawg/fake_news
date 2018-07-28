@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "fake_news_sources/new", type: :view do
   before(:each) do
     assign(:fake_news_source, FakeNewsSource.new(
-      :twitter_handle => "MyString",
+      :query => "MyString",
       :filepath => "MyString"
     ))
   end
@@ -13,7 +13,7 @@ RSpec.describe "fake_news_sources/new", type: :view do
 
     assert_select "form[action=?][method=?]", fake_news_sources_path, "post" do
 
-      assert_select "input[name=?]", "fake_news_source[twitter_handle]"
+      assert_select "input[name=?]", "fake_news_source[query]"
 
       assert_select "input[name=?]", "fake_news_source[filepath]"
     end

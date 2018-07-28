@@ -5,7 +5,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Twitter handle</th>
+      <th>Query</th>
       <th>Filepath</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +14,7 @@
   <tbody>
     <% @fake_news_sources.each do |fake_news_source| %>
       <tr>
-        <td><%= fake_news_source.twitter_handle %></td>
+        <td><%= fake_news_source.query %></td>
         <td><%= fake_news_source.filepath %></td>
         <td><%= link_to 'Show', fake_news_source %></td>
         <td><%= link_to 'Destroy', fake_news_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>

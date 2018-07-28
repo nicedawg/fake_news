@@ -4,13 +4,13 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
   let(:username) { "user-#{SecureRandom.hex(10)}" }
   let(:valid_attributes) {
     {
-      twitter_handle: username,
+      query: username,
     }
   }
 
   let(:invalid_attributes) {
     {
-      twitter_handle: nil,
+      query: nil,
     }
   }
 
@@ -50,7 +50,7 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
         }.to change(FakeNewsSource, :count).by(1)
       end
 
-      it "fetches a dictionary of tweets" do
+      it "fetches a dictionary of articles" do
         expect_any_instance_of(FetchDictionaryService).to receive(:fetch).and_call_original
         post :create, params: {fake_news_source: valid_attributes}, session: valid_session
         expect(FakeNewsSource.last.filepath).to be_present

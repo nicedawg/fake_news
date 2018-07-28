@@ -1,0 +1,1 @@
+json.partial! "fake_news_source_fake_articles/fake_news_source_fake_article", fake_news_source_fake_article: @fake_news_source_fake_article

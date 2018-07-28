@@ -1,1 +1,0 @@
-json.partial! "fake_news_source_fake_tweets/fake_news_source_fake_tweet", fake_news_source_fake_tweet: @fake_news_source_fake_tweet

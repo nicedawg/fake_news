@@ -12,14 +12,10 @@ class FetchDictionaryService
 
   def fetch
     begin
-      fetch_tweets
+      fetch_articles
       self.status = 'OK'
-    rescue UsernameNotProvided
-      self.errors << 'A username was not provided'
-    rescue UsernameDoesNotExist
-      self.errors << 'The requested username does not exist'
-    rescue UsernameIsProtected
-      self.errors << 'The requested username is protected'
+    rescue QueryNotProvided
+      self.errors << 'A query was not provided'
     rescue => e
       self.errors << "An error occurred - #{e.message}"
     end
@@ -31,28 +27,26 @@ class FetchDictionaryService
     }
   end
 
-  class UsernameNotProvided < Exception; end
-  class UsernameDoesNotExist < Exception; end
-  class UsernameIsProtected < Exception; end
+  class QueryNotProvided < Exception; end
 
   private
 
-  def fetch_tweets
-    raise UsernameNotProvided if username.blank?
+  def fetch_articles
+    raise QueryNotProvided if username.blank?
 
     FileUtils.mkdir_p BASE_DIR
     filepath = BASE_DIR.join("#{username}-#{Time.now.to_i}.txt")
     File.open(filepath, 'wb') do |f|
-      # TODO: actually use username to get tweets from twitter
+      # TODO: actually use query to get articles from newsapi.org
       # TODO: make sure proper exceptions are thrown
-      self.class.trump_tweets_fixture.each do |tweet|
-        f.puts tweet
+      self.class.trump_articles_fixture.each do |article|
+        f.puts article
       end
     end
     self.filepath = filepath.to_s
   end
 
-  def self.trump_tweets_fixture
+  def self.trump_articles_fixture
     [
       'The only things the Democrats do well is “Resist,” which is their campaign slogan, and “Obstruct.” Cryin’ Chuck Schumer has almost 400 great American people that are waiting “forever” to serve our Country! A total disgrace. Mitch M should not let them go home until all approved!',
       'Democrats, who want Open Borders and care little about Crime, are incompetent, but they have the Fake News Media almost totally on their side!',

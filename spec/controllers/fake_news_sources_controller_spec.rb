@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe FakeNewsSourcesController, type: :controller do
-
-  # This should return the minimal set of attributes required to create a valid
-  # FakeNewsSource. As you add validations to FakeNewsSource, be sure to
-  # adjust the attributes here as well.
+  let(:username) { "user-#{SecureRandom.hex(10)}" }
   let(:valid_attributes) {
     {
-      twitter_handle: "user-#{SecureRandom.hex(10)}",
+      twitter_handle: username,
     }
   }
 
@@ -51,6 +48,12 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
         expect {
           post :create, params: {fake_news_source: valid_attributes}, session: valid_session
         }.to change(FakeNewsSource, :count).by(1)
+      end
+
+      it "fetches a dictionary of tweets" do
+        expect_any_instance_of(FetchDictionaryService).to receive(:fetch).and_call_original
+        post :create, params: {fake_news_source: valid_attributes}, session: valid_session
+        expect(FakeNewsSource.last.filepath).to be_present
       end
 
       it "redirects to the created fake_news_source" do

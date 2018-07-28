@@ -22,6 +22,10 @@ class FakeNewsSourcesController < ApplicationController
   def create
     @fake_news_source = FakeNewsSource.new(fake_news_source_params)
 
+    fetcher = FetchDictionaryService.new(@fake_news_source.twitter_handle)
+    fetch_status = fetcher.fetch
+    @fake_news_source.filepath = fetch_status[:filepath]
+
     respond_to do |format|
       if @fake_news_source.save
         format.html { redirect_to @fake_news_source, notice: 'Fake news source was successfully created.' }
@@ -51,6 +55,6 @@ class FakeNewsSourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fake_news_source_params
-      params.require(:fake_news_source).permit(:twitter_handle, :filepath)
+      params.require(:fake_news_source).permit(:twitter_handle)
     end
 end

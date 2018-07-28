@@ -45,14 +45,6 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
-      fake_news_source = FakeNewsSource.create! valid_attributes
-      get :edit, params: {id: fake_news_source.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new FakeNewsSource" do
@@ -70,37 +62,6 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {fake_news_source: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        {
-          twitter_handle: "user-newhandle",
-        }
-      }
-
-      it "updates the requested fake_news_source" do
-        fake_news_source = FakeNewsSource.create! valid_attributes
-        put :update, params: {id: fake_news_source.to_param, fake_news_source: new_attributes}, session: valid_session
-        fake_news_source.reload
-        expect(fake_news_source.twitter_handle).to eq('user-newhandle')
-      end
-
-      it "redirects to the fake_news_source" do
-        fake_news_source = FakeNewsSource.create! valid_attributes
-        put :update, params: {id: fake_news_source.to_param, fake_news_source: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(fake_news_source)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        fake_news_source = FakeNewsSource.create! valid_attributes
-        put :update, params: {id: fake_news_source.to_param, fake_news_source: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end

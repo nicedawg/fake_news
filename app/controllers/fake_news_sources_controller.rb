@@ -1,5 +1,5 @@
 class FakeNewsSourcesController < ApplicationController
-  before_action :set_fake_news_source, only: [:show, :edit, :update, :destroy]
+  before_action :set_fake_news_source, only: [:show, :destroy]
 
   # GET /fake_news_sources
   # GET /fake_news_sources.json
@@ -17,10 +17,6 @@ class FakeNewsSourcesController < ApplicationController
     @fake_news_source = FakeNewsSource.new
   end
 
-  # GET /fake_news_sources/1/edit
-  def edit
-  end
-
   # POST /fake_news_sources
   # POST /fake_news_sources.json
   def create
@@ -32,20 +28,6 @@ class FakeNewsSourcesController < ApplicationController
         format.json { render :show, status: :created, location: @fake_news_source }
       else
         format.html { render :new }
-        format.json { render json: @fake_news_source.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /fake_news_sources/1
-  # PATCH/PUT /fake_news_sources/1.json
-  def update
-    respond_to do |format|
-      if @fake_news_source.update(fake_news_source_params)
-        format.html { redirect_to @fake_news_source, notice: 'Fake news source was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fake_news_source }
-      else
-        format.html { render :edit }
         format.json { render json: @fake_news_source.errors, status: :unprocessable_entity }
       end
     end

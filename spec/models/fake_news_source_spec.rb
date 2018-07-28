@@ -5,7 +5,7 @@ RSpec.describe FakeNewsSource, type: :model do
     it 'is valid with valid attributes' do
       expect(FakeNewsSource.new(twitter_handle: 'nicedawg')).to be_valid
     end
-    
+
     it 'is not valid when twitter_handle is missing' do
       expect(FakeNewsSource.new(twitter_handle: nil)).not_to be_valid
     end

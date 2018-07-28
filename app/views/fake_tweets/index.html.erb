@@ -1,0 +1,23 @@
+<h1>Listing fake_tweets</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fake_tweets.each do |fake_tweet| %>
+  <tr>
+    <td><%= fake_tweet.content %></td>
+    <td><%= link_to 'Show', [fake_tweet.fake_news_source, fake_tweet] %></td>
+    <td><%= link_to 'Edit', edit_fake_news_source_fake_tweet_path(fake_tweet.fake_news_source, fake_tweet) %></td>
+    <td><%= link_to 'Destroy', [fake_tweet.fake_news_source, fake_tweet], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fake tweet', new_fake_news_source_fake_tweet_path(params[:fake_news_source_id]) %>

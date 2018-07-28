@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Other gems
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'nested_scaffold'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do

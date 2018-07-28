@@ -20,6 +20,20 @@ RSpec.describe FetchDictionaryService, type: :service do
       end
     end
 
+    context 'when twitter username not provided' do
+      subject { described_class.new(' ').fetch }
+
+      it 'returns nil for the filepath' do
+        expect(subject[:filename]).to be_nil
+      end
+      it 'returns status ERROR' do
+        expect(subject[:status]).to eq 'ERROR'
+      end
+      it 'returns an error description' do
+        expect(subject[:errors]).to eq ['A username was not provided']
+      end
+    end
+
     context 'when twitter username does not exist' do
       before { expect_any_instance_of(described_class).to receive(:fetch_tweets).and_raise(FetchDictionaryService::UsernameDoesNotExist) }
       it 'returns nil for the filepath' do

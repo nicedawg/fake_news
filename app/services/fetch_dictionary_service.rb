@@ -14,6 +14,8 @@ class FetchDictionaryService
     begin
       fetch_tweets
       self.status = 'OK'
+    rescue UsernameNotProvided
+      self.errors << 'A username was not provided'
     rescue UsernameDoesNotExist
       self.errors << 'The requested username does not exist'
     rescue UsernameIsProtected
@@ -29,17 +31,20 @@ class FetchDictionaryService
     }
   end
 
+  class UsernameNotProvided < Exception; end
   class UsernameDoesNotExist < Exception; end
   class UsernameIsProtected < Exception; end
 
   private
 
   def fetch_tweets
-    # TODO: actually use username to get tweets from twitter
-    # TODO: make sure proper exceptions are thrown
+    raise UsernameNotProvided if username.blank?
+
     FileUtils.mkdir_p BASE_DIR
     filepath = BASE_DIR.join("#{username}-#{Time.now.to_i}.txt")
     File.open(filepath, 'wb') do |f|
+      # TODO: actually use username to get tweets from twitter
+      # TODO: make sure proper exceptions are thrown
       self.class.trump_tweets_fixture.each do |tweet|
         f.puts tweet
       end

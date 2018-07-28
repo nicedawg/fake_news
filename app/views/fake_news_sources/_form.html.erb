@@ -1,0 +1,27 @@
+<%= form_with(model: fake_news_source, local: true) do |form| %>
+  <% if fake_news_source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fake_news_source.errors.count, "error") %> prohibited this fake_news_source from being saved:</h2>
+
+      <ul>
+      <% fake_news_source.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :twitter_handle %>
+    <%= form.text_field :twitter_handle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :filepath %>
+    <%= form.text_field :filepath %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -20,10 +20,12 @@ gem 'uglifier', '>= 1.3.0'
 # Other gems
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'nested_scaffold'
+gem 'news-api'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.7'
 end
 
@@ -39,4 +41,5 @@ group :test do
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'webmock'
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe FakeNewsSourcesController, type: :controller do
-  let(:username) { "user-#{SecureRandom.hex(10)}" }
+  let(:query) { "bitcoin" }
   let(:valid_attributes) {
     {
-      query: username,
+      query: query,
     }
   }
 

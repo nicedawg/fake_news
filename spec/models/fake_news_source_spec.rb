@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FakeNewsSource, type: :model do
   describe 'valid?' do
     it 'is valid with valid attributes' do
-      expect(FakeNewsSource.new(query: 'nicedawg')).to be_valid
+      expect(FakeNewsSource.new(query: 'bitcoin')).to be_valid
     end
 
     it 'is not valid when query is missing' do
@@ -11,8 +11,8 @@ RSpec.describe FakeNewsSource, type: :model do
     end
 
     it 'is not valid when query is a duplicate' do
-      FakeNewsSource.create(query: 'barddawg')
-      expect(FakeNewsSource.new(query: 'barddawg')).not_to be_valid
+      FakeNewsSource.create(query: 'bitcoin')
+      expect(FakeNewsSource.new(query: 'bitcoin')).not_to be_valid
     end
   end
 end

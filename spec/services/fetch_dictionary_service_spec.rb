@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FetchDictionaryService, type: :service do
+  before { stub_news_search }
+
   describe '#fetch' do
     subject { described_class.new('bitcoin').fetch }
 

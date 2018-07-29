@@ -15,11 +15,18 @@ class NewsApiClient
 
   private
 
-  def client
-    News.new ENV['NEWSAPI_KEY']
-  end
-
   def get_results_from_api
-    client.get_everything(q: query).map { |article| article.description }
+    HTTParty
+      .get('https://content.guardianapis.com/search',
+           query: {
+             q: query,
+             'api-key': ENV['GUARDIAN_API_KEY'],
+             'show-fields': 'body',
+             'show-blocks': 'body',
+           })
+      .parsed_response['response']['results']
+      .map do |result|
+        result['fields']['body']
+      end
   end
 end

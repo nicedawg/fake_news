@@ -19,6 +19,8 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
   # FakeNewsSourcesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before { stub_news_search }
+
   describe "GET #index" do
     it "returns a success response" do
       fake_news_source = FakeNewsSource.create! valid_attributes

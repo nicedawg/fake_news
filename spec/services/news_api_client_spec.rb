@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NewsApiClient, type: :service do
-  before { stub_news_api_client_results }
+  before { stub_news_search }
 
   describe '#search' do
     subject { NewsApiClient.new(query).search }
@@ -31,11 +31,5 @@ RSpec.describe NewsApiClient, type: :service do
         expect(results).to eq results2
       end
     end
-  end
-
-  def stub_news_api_client_results
-    allow_any_instance_of(News)
-      .to receive(:get_everything)
-      .and_return( 2.times.map { OpenStruct.new(description: 'The big black bear bit the big black bug and the big black bear bled blood.') })
   end
 end

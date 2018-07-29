@@ -4,18 +4,19 @@
   <thead>
     <tr>
       <th>Query</th>
-      <th>Articles Count</th>
-      <th colspan="2"></th>
+      <th>Source Articles</th>
+      <th>Fake Articles</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @fake_news_sources.each do |fake_news_source| %>
       <tr>
-        <td><%= fake_news_source.query %></td>
+        <td><%= link_to fake_news_source.query, fake_news_source %></td>
         <td><%= fake_news_source.articles_count %></td>
-        <td><%= link_to 'Show', fake_news_source %></td>
-        <td><%= link_to 'Destroy', fake_news_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= fake_news_source.fake_articles.count %></td>
+        <td><%= link_to 'Destroy', fake_news_source, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Fake News Source', new_fake_news_source_path %>
+<%= link_to 'New Fake News Source', new_fake_news_source_path, class: 'btn btn-primary' %>

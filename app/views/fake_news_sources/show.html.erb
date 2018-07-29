@@ -3,6 +3,9 @@
   <%= @fake_news_source.query %>
 </p>
 
-<%= link_to 'Generate new fake article', new_fake_news_source_fake_article_path(@fake_news_source) %>
+<%= link_to 'Generate new fake article',
+  new_fake_news_source_fake_article_path(@fake_news_source),
+  class: 'btn btn-primary'
+%>
 
 <%= link_to 'Back', fake_news_sources_path %>

@@ -5,6 +5,7 @@ RSpec.describe "fake_news_sources/show", type: :view do
     @fake_news_source = assign(:fake_news_source, FakeNewsSource.create!(
       :query => "BitCoin",
     ))
+    @fake_articles = @fake_news_source.fake_articles
   end
 
   it "renders attributes in <p>" do

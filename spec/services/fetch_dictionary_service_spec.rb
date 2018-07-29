@@ -10,10 +10,6 @@ RSpec.describe FetchDictionaryService, type: :service do
       it 'returns a path to the created file' do
         expect(subject[:filepath]).to match(/bitcoin-/)
       end
-      it 'actually creates the file' do
-        expect(File).to receive(:open)
-        subject
-      end
       it 'returns status OK' do
         expect(subject[:status]).to eq 'OK'
       end

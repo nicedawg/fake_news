@@ -8,7 +8,9 @@ class NewsApiClient
   def search
     return [] if query.blank?
 
+    Rails.logger.debug "searching for '#{query}'"
     Rails.cache.fetch("search-#{query.downcase}", expires_in: 1.week) do
+      Rails.logger.debug "cache MISS for'#{query}'"
       get_results_from_api
     end
   end
@@ -21,6 +23,7 @@ class NewsApiClient
            query: {
              q: query,
              'api-key': ENV['GUARDIAN_API_KEY'],
+             'page-size': 50,
              'show-fields': 'body',
              'show-blocks': 'body',
            })

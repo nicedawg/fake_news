@@ -15,4 +15,11 @@ RSpec.describe FakeNewsSource, type: :model do
       expect(FakeNewsSource.new(query: 'bitcoin')).not_to be_valid
     end
   end
+
+  describe '.generate_content' do
+    it 'uses MarkyMarkov to generate 50 sentences.' do
+      expect_any_instance_of(MarkyMarkov::TemporaryDictionary).to receive(:generate_n_sentences).with(50)
+      FakeNewsSource.new(query: 'bitcoin').generate_content
+    end
+  end
 end

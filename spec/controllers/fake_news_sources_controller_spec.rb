@@ -55,7 +55,7 @@ RSpec.describe FakeNewsSourcesController, type: :controller do
       it "fetches a dictionary of articles" do
         expect_any_instance_of(FetchDictionaryService).to receive(:fetch).and_call_original
         post :create, params: {fake_news_source: valid_attributes}, session: valid_session
-        expect(FakeNewsSource.last.filepath).to be_present
+        expect(FakeNewsSource.last.dictionary).to be_present
       end
 
       it "redirects to the created fake_news_source" do

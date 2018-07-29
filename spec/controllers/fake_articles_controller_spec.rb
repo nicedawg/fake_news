@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe FakeArticlesController, type: :controller do
 
-  let(:fake_news_source) { FakeNewsSource.create(query: 'bitcoin') }
+  let(:fake_news_source) { FakeNewsSource.create(query: 'bitcoin', dictionary: 'Bitcoin is a cryptocurrency that is decentralized and uses expensive graphics cards for the processor-intensive mining process.') }
 
   let(:valid_attributes) {
     {
@@ -43,6 +43,11 @@ RSpec.describe FakeArticlesController, type: :controller do
     it "returns a success response" do
       get :new, params: { fake_news_source_id: fake_news_source.id }, session: valid_session
       expect(response).to be_successful
+    end
+
+    it "adds default content based on a markov chain result from the news source" do
+      expect_any_instance_of(FakeNewsSource).to receive(:generate_content).and_return 'generated content'
+      get :new, params: { fake_news_source_id: fake_news_source.id }, session: valid_session
     end
   end
 

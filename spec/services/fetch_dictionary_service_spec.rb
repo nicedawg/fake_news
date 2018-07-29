@@ -7,8 +7,8 @@ RSpec.describe FetchDictionaryService, type: :service do
     subject { described_class.new('bitcoin').fetch }
 
     context 'when dictionary can be fetched' do
-      it 'returns a path to the created file' do
-        expect(subject[:filepath]).to match(/bitcoin-/)
+      it 'returns the dictionary of text' do
+        expect(subject[:dictionary]).to be_present
       end
       it 'returns status OK' do
         expect(subject[:status]).to eq 'OK'
@@ -25,8 +25,8 @@ RSpec.describe FetchDictionaryService, type: :service do
     context 'when query not provided' do
       subject { described_class.new(' ').fetch }
 
-      it 'returns nil for the filepath' do
-        expect(subject[:filename]).to be_nil
+      it 'returns nil for the dictionary' do
+        expect(subject[:dictionary]).to be_nil
       end
       it 'returns status ERROR' do
         expect(subject[:status]).to eq 'ERROR'
@@ -38,8 +38,8 @@ RSpec.describe FetchDictionaryService, type: :service do
 
     context 'when an error occurs' do
       before { expect_any_instance_of(described_class).to receive(:fetch_articles).and_raise('The internet tubes are clogged') }
-      it 'returns nil for the filepath' do
-        expect(subject[:filename]).to be_nil
+      it 'returns nil for the dictionary' do
+        expect(subject[:dictionary]).to be_nil
       end
       it 'returns status ERROR' do
         expect(subject[:status]).to eq 'ERROR'

@@ -5,14 +5,12 @@
     <th>Content</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @fake_articles.each do |fake_article| %>
   <tr>
     <td><%= fake_article.content %></td>
     <td><%= link_to 'Show', [fake_article.fake_news_source, fake_article] %></td>
-    <td><%= link_to 'Edit', edit_fake_news_source_fake_article_path(fake_article.fake_news_source, fake_article) %></td>
     <td><%= link_to 'Destroy', [fake_article.fake_news_source, fake_article], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

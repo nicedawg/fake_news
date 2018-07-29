@@ -14,6 +14,7 @@ class FakeArticlesController < ApplicationController
   # GET fake_news_sources/1/fake_articles/new
   def new
     @fake_article = @fake_news_source.fake_articles.build
+    @fake_article.content = @fake_news_source.generate_content
   end
 
   # POST fake_news_sources/1/fake_articles

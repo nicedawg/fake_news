@@ -24,7 +24,7 @@ class FakeNewsSourcesController < ApplicationController
 
     fetcher = FetchDictionaryService.new(@fake_news_source.query)
     fetch_status = fetcher.fetch
-    @fake_news_source.filepath = fetch_status[:filepath]
+    @fake_news_source.dictionary = fetch_status[:dictionary]
     @fake_news_source.articles_count = fetch_status[:articles_count]
 
     respond_to do |format|

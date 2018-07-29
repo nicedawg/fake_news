@@ -11,4 +11,9 @@ RSpec.describe "fake_news_sources/show", type: :view do
     render
     expect(rendered).to match(/BitCoin/)
   end
+
+  it "has a link to generate a new fake article" do
+    render
+    expect(rendered).to match(/Generate new fake article/)
+  end
 end

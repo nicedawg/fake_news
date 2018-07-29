@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_033924) do
+ActiveRecord::Schema.define(version: 2018_07_29_180140) do
 
   create_table "fake_articles", force: :cascade do |t|
     t.integer "fake_news_source_id"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2018_07_29_033924) do
 
   create_table "fake_news_sources", force: :cascade do |t|
     t.string "query"
-    t.string "filepath"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "articles_count", default: 0
+    t.text "dictionary"
   end
 
 end

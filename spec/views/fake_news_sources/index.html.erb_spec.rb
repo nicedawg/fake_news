@@ -5,11 +5,9 @@ RSpec.describe "fake_news_sources/index", type: :view do
     assign(:fake_news_sources, [
       FakeNewsSource.create!(
         :query => "Bitcoin",
-        :filepath => "Filepath"
       ),
       FakeNewsSource.create!(
         :query => "Donald Trump",
-        :filepath => "Filepath"
       )
     ])
   end
@@ -18,6 +16,5 @@ RSpec.describe "fake_news_sources/index", type: :view do
     render
     assert_select "tr>td", :text => "Bitcoin".to_s, :count => 1
     assert_select "tr>td", :text => "Donald Trump".to_s, :count => 1
-    assert_select "tr>td", :text => "Filepath".to_s, :count => 2
   end
 end

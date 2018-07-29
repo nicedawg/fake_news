@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :query %>
-    <%= form.text_field :query %>
+    <%= form.text_field :query, class: 'form-control' %>
   </div>
 
   <div class="actions">
+    <%= link_to 'Cancel', fake_news_sources_path, class: 'btn btn-secondary' %>
     <%= form.submit 'Save', class: 'btn btn-primary' %>
   </div>
 <% end %>

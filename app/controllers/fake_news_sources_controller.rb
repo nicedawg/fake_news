@@ -10,6 +10,7 @@ class FakeNewsSourcesController < ApplicationController
   # GET /fake_news_sources/1
   # GET /fake_news_sources/1.json
   def show
+    @fake_articles = @fake_news_source.fake_articles
   end
 
   # GET /fake_news_sources/new

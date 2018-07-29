@@ -11,11 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: 'form-control', rows: 20 %>
   </div>
   <div class="actions">
+    <%= link_to 'Cancel', fake_news_source_fake_articles_path(@fake_article.fake_news_source), class: 'btn btn-secondary' %>
     <%= f.submit 'Save', class: 'btn btn-primary' %>
   </div>
 <% end %>

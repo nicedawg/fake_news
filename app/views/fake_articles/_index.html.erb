@@ -1,0 +1,22 @@
+<% if @fake_articles.any? %>
+  <caption>Fake Articles</caption>
+  <table class="table">
+    <tr>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @fake_articles.each do |fake_article| %>
+    <tr>
+      <td><%= fake_article.content.truncate(200) %></td>
+      <td><%= link_to 'Show', [fake_article.fake_news_source, fake_article], class: 'btn btn-primary' %></td>
+      <td><%= link_to 'Destroy', [fake_article.fake_news_source, fake_article], class: 'btn btn-danger', confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>
+    There are no fake articles yet for this topic. <%= link_to 'Add one!', new_fake_news_source_fake_article_path(@fake_news_source) %>
+  </p>
+<% end %>

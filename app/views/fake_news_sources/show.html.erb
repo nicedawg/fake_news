@@ -3,9 +3,11 @@
   <%= @fake_news_source.query %>
 </p>
 
+<%= render partial: 'fake_articles/index' %>
+
 <%= link_to 'Generate new fake article',
   new_fake_news_source_fake_article_path(@fake_news_source),
   class: 'btn btn-primary'
 %>
 
-<%= link_to 'Back', fake_news_sources_path %>
+<%= link_to 'Back', fake_news_sources_path, class: 'btn btn-secondary' %>

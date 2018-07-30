@@ -1,7 +1,8 @@
 # FakeNews
 
 FakeNews is a rails app that makes it easy to generate fake news articles based on a
-given query from data provided by NewsApi.org.
+given query from data provided by The Guardian OpenPlatform
+(https://open-platform.theguardian.com/)
 
 This was created for fun, and to demonstrate writing integration tests for the
 Bowling Green Web Developers meetup, in July 2018.
@@ -11,9 +12,9 @@ harassing anybody. :-)
 
 ## Configuration
 
-### NewsApi.org
+### The Guardian OpenPlatform
 
-To query against NewsApi.org, you need an API key. See
+To query against The Guardian's OpenPlatform, you need an API key. See
 https://newsapi.org/docs/get-started for details. Be aware that a free developer
 API key has daily limits!
 

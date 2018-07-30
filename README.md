@@ -15,10 +15,10 @@ harassing anybody. :-)
 ### The Guardian OpenPlatform
 
 To query against The Guardian's OpenPlatform, you need an API key. See
-https://newsapi.org/docs/get-started for details. Be aware that a free developer
+https://open-platform.theguardian.com for details. Be aware that a free developer
 API key has daily limits!
 
-This rails app expects a valid NewsApi.org API key in an environment variable.
+This rails app expects a valid API key in an environment variable.
 
 Copy the provided `.env.example` file from the root of your project directory to
 `.env`, and add your key there.
